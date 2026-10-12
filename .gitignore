@@ -1,0 +1,8 @@
+analysis/
+__pycache__/
+.conversion-state.json
+.conversion-state.tmp
+
+release/
+node_modules/
+*.log

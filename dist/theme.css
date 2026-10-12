@@ -1,0 +1,21 @@
+/* Tema salvo pelo personalizador local. Fonte: theme.json. */
+:root {
+  --font-primary: "Georgia", monospace;
+  --font-secondary: "Georgia", sans-serif;
+  --font-primary-weight: 500;
+  --font-secondary-weight: 300;
+  --header-font-size: 18px;
+  --header-font-weight: 800;
+  --color-background: #ffffff;
+  --color-text: #171716;
+  --color-muted: #ffffff;
+  --color-header: #171716;
+  --color-navigation: #595955;
+  --color-controls: #171716;
+  --color-control-background: #ffffff;
+  --color-border: #ffffff;
+  --color-panel-background: #ffffff;
+  --color-zoom-background: #ffffff;
+  --color-focus: #555555;
+  --color-shadow: #000000;
+}
