@@ -1,0 +1,16 @@
+/* Área de leitura: marca e controles sobre uma tela dedicada ao livro. */
+.book-only{overflow:hidden}
+.book-only #reader,.book-only main{height:100svh;min-height:0}
+.book-only #reader{position:relative}
+.book-only #stage{height:100svh;min-height:0;padding:38px 12px 44px}
+.book-brand{position:fixed;top:max(8px,env(safe-area-inset-top));left:max(16px,env(safe-area-inset-left));z-index:20;display:block;line-height:0}
+.book-brand img{display:block;width:96px;height:auto;border:0;box-shadow:none;filter:none}
+.book-only #open-book,.book-only #interaction-hint,.book-only .page-total{display:none!important}
+.book-only .reader-controls{position:fixed;left:50%;bottom:max(7px,env(safe-area-inset-bottom));transform:translateX(-50%);height:36px;gap:8px;z-index:20}
+.book-only .reading-position{min-width:96px}
+.book-only .arrow-button{width:36px;height:32px}
+.book-only .reader-bottom{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(7px,env(safe-area-inset-bottom));height:36px;width:auto;margin:0;z-index:20}
+.book-only .reading-tools{position:static;gap:5px}
+@media(hover:hover) and (pointer:fine){.book-only .reader-controls,.book-only .reading-tools{opacity:.35;transition:opacity .2s}.book-only .reader-controls:hover,.book-only .reader-controls:focus-within,.book-only .reading-tools:hover,.book-only .reading-tools:focus-within{opacity:1}.book-only .reader-controls button,.book-only .reading-tools button{opacity:1}}
+@media(max-width:700px){.book-only #stage{padding:38px 8px 44px}.book-brand{left:max(12px,env(safe-area-inset-left))}.book-brand img{width:86px}.book-only .reader-controls{left:max(10px,env(safe-area-inset-left));transform:none;gap:5px}.book-only .reading-position{min-width:90px}.book-only .reader-bottom{right:max(10px,env(safe-area-inset-right))}.book-only .arrow-button{width:32px}.book-only .reading-tools{gap:3px}}
+@media(prefers-reduced-motion:reduce){.book-only .reader-controls,.book-only .reading-tools{transition:none}}

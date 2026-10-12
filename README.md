@@ -28,13 +28,13 @@ node scripts/serve.mjs
 Abra http://127.0.0.1:4173. Alternativa: python -m http.server 4173 --directory dist. Não abra index.html por file://, pois o navegador bloqueia o carregamento dos metadados.
 
 ## Controles
-Clique na capa ou em Abrir o livro. Clique nas bordas, arraste os cantos, use as setas na tela ou ←/→ e PageUp/PageDown. Home abre a capa; End abre a contracapa. Z amplia a página/spread atual. No visor ampliado, use +/−, controle deslizante, arraste com mouse ou role/deslize no celular. Ctrl+roda ajusta a ampliação. F alterna tela cheia nos navegadores compatíveis. Esc fecha os diálogos. Índice oferece seções e miniaturas.
+Clique na capa. Clique nas bordas, arraste os cantos, use as setas na tela ou ←/→ e PageUp/PageDown. Home abre a capa; End abre a contracapa. Z amplia a página/spread atual. No visor ampliado, use +/−, controle deslizante, arraste com mouse ou role/deslize no celular. Ctrl+roda ajusta a ampliação. F alterna tela cheia nos navegadores compatíveis. Esc fecha os diálogos. Índice oferece seções e miniaturas.
 
 ## Carregamento
 Somente as páginas próximas recebem src inicialmente; vizinhas são antecipadas para evitar atrasos no folheamento. Arquivos de 2400 px são carregados somente quando a ampliação é aberta; miniaturas são carregadas ao solicitar todas as páginas. A biblioteca e todas as imagens ficam locais, sem CDN em tempo de execução.
 
 ## Publicação no GitHub Pages
-Projeto preparado para publicação gratuita. Siga [PUBLICACAO.md](PUBLICACAO.md) para enviar o projeto completo com o workflow que publica somente `dist/`, ou somente os arquivos públicos na raiz de um repositório. Execute `npm run check:pages` para verificar e `npm run preview:pages` para testar em subdiretório. Os pacotes ficam em `release/`; regenere com `python scripts/package_pages.py`. Nenhuma publicação foi feita. Edição 2020 fora do escopo atual.
+Projeto preparado para publicação gratuita. Siga [PUBLICACAO.md](PUBLICACAO.md) para enviar o projeto completo com o workflow que publica somente `dist/`, ou somente os arquivos públicos na raiz de um repositório. Execute `npm run check:pages` para verificar e `npm run preview:pages` para testar em subdiretório. Os pacotes ficam em `release/`; regenere com `python scripts/package_pages.py`. Site publicado em https://muriliog.github.io/. Edição 2020 fora do escopo atual.
 
 Limites: textos do PDF estão rasterizados e não são selecionáveis; a versão inicial prioriza fidelidade visual. Tela cheia depende do navegador, especialmente no iOS. O zoom alcança 300%, com imagem de 2400 px por página.
 
@@ -45,3 +45,19 @@ Também foram aprovados abertura por toque rápido, arraste para avançar/voltar
 
 ## Personalizador visual local
 Execute `npm run customize` nesta pasta e abra http://127.0.0.1:4180/customizer.html. O painel altera o preview sem recarregar o livro e salva diretamente `dist/theme.json` e `dist/theme.css`. Instruções completas em PERSONALIZACAO.md. Publique somente `dist/`; a ferramenta local não faz parte dos arquivos públicos.
+
+
+## Abertura do logo
+
+A página inicial apresenta os SVGs fornecidos na sequência `[.muru] → [.mur] → [.mu] → [.m]`, preservando a fonte e a composição. A interface da abertura usa fundo branco e letras pretas, sem moldura nem sombra. O logo final `[.m]` permanece por 5 segundos antes de revelar o livro. A abertura completa dura aproximadamente 7,2 segundos e aparece uma vez por sessão da aba. O botão “Pular abertura” ou a tecla Escape liberam o livro imediatamente. A preferência de movimento reduzido suprime a animação.
+
+O componente fica separado em `dist/brand-intro.css` e `dist/brand-intro.js`. Os SVGs originais estão em `dist/assets/brand/`. O folheamento, o zoom e o manifesto de páginas não foram alterados.
+
+Para rever a abertura localmente, acesse `http://127.0.0.1:4173/?abertura=1`. Os arquivos do componente usam caminhos relativos e acompanham o restante de `dist/` quando uma publicação for preparada.
+
+
+## Tela dedicada ao livro
+
+A página inicial usa `dist/book-layout.css` para ocupar a viewport, manter `[.muru]` no canto superior esquerdo e exibir somente os controles discretos e o indicador da página. Os links e textos anteriores do cabeçalho foram retirados. O livro se ajusta à área disponível mantendo a proporção original, com duas páginas no desktop e uma em telas pequenas.
+
+Em `app.js`, apenas o cálculo das dimensões foi ajustado para considerar as margens da nova tela. A lógica de folheamento, zoom, teclado, arraste e índice permanece igual. O arquivo `dist/favicon.svg` usa `[.m]`, e o endereço do ícone inclui uma versão para atualizar o cache do navegador.

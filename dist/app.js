@@ -36,8 +36,10 @@ function buildBook() {
   if(flip) flip.destroy();
   host.innerHTML='<div id="book"></div>';
   const portrait=window.innerWidth<=700;
-  const height = Math.max(250,stage.clientHeight-30);
-  const width = Math.floor(Math.min(height*manifest.aspectRatio,portrait?stage.clientWidth-52:(stage.clientWidth-120)/2,600));
+  const stageStyle = getComputedStyle(stage);
+  const height = Math.max(250,stage.clientHeight-parseFloat(stageStyle.paddingTop)-parseFloat(stageStyle.paddingBottom));
+  const usableWidth = stage.clientWidth-parseFloat(stageStyle.paddingLeft)-parseFloat(stageStyle.paddingRight);
+  const width = Math.floor(Math.min(height*manifest.aspectRatio,portrait?usableWidth:usableWidth/2));
   const pageHeight = Math.floor(width/manifest.aspectRatio);
   host.style.setProperty('--pw',width+'px');
   host.style.setProperty('--ph',pageHeight+'px');
